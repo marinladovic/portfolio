@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
+import ToggleTheme from './ToggleTheme';
 
 function Navbar() {
   const [show, setShow] = useState(true);
@@ -39,10 +40,11 @@ function Navbar() {
   return (
     <header className={`active ${show && 'hidden'}`}>
       <nav className="w-full flex justify-between items-center">
-        <h1 className="p-4 text-light uppercase font-semibold">
+        <h1 className="p-4 text-accent uppercase font-semibold">
           Marin Ladović <span className="font-light">| Web developer</span>
         </h1>
-        <ul className="hidden md:flex uppercase text-light">
+        <ToggleTheme />
+        <ul className="hidden md:flex uppercase text-accent">
           <li
             onClick={() => navigate('/')}
             className={

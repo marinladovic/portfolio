@@ -4,18 +4,18 @@
 
 @layer base {
   body {
-    @apply bg-dark;
+    @apply bg-primary;
   }
 }
 
 .active {
-  @apply w-full border-2 border-light font-sans;
+  @apply w-full border-2 border-accent font-sans;
 }
 
 .navigation-item {
-  @apply p-4 border-l-2 border-light cursor-pointer hover:text-dark hover:bg-light transition duration-200;
+  @apply p-4 border-l-2 border-accent cursor-pointer hover:text-primary hover:bg-accent transition duration-200;
 }
 
 .navigation-item__active {
-  @apply p-4 border-l-2 text-dark bg-light font-bold cursor-pointer;
+  @apply p-4 border-l-2 text-primary bg-accent font-bold cursor-pointer;
 }

@@ -4,8 +4,10 @@ module.exports = {
   theme: {
     extend: {},
     colors: {
-      light: '#00ffd0',
-      dark: '#005963',
+      accent: 'var(--theme-accent)',
+      primary: 'var(--theme-primary)',
+      // accent: '#00ffd0',
+      // primitive: '#005963',
     },
     fontFamily: {
       sans: ['Lato', 'ui-sans-serif', 'sans-serif'],
