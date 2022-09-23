@@ -9,7 +9,7 @@
 }
 
 .active {
-  @apply w-full border-2 border-accent font-sans;
+  @apply w-full border-2 border-accent font-sans z-50 bg-primary top-0;
 }
 
 .navigation-item {

@@ -38,7 +38,7 @@ function Navbar() {
   };
 
   return (
-    <header className={`active ${show && 'hidden'}`}>
+    <header className={`active ${show ? 'hidden' : 'hidden'}`}>
       <nav className="w-full flex justify-between items-center">
         <h1 className="p-4 text-accent uppercase font-semibold">
           Marin Ladović <span className="font-light">| Web developer</span>
