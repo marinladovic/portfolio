@@ -1,34 +1,52 @@
+import { useState } from 'react';
 import ToggleTheme from './ToggleTheme';
 import { BsLinkedin, BsGithub, BsFacebook } from 'react-icons/bs';
 
 function Hero() {
+  //eslint-disable-next-line no-unused-vars
+  const [isNavOpen, setIsNavOpen] = useState(false);
+
   return (
     <div className="grid grid-cols-[20px_1fr_20px] md:grid-cols-[50px_1fr_50px] mt-3 mb-16 md:mb-24 mx-3 border border-accent">
-      <nav className="col-span-3 flex justify-between items-center border-b border-accent">
+      <nav className="col-span-3 flex justify-between border-b border-accent">
         <h1 className="p-2 text-accent uppercase font-semibold">
           Marin Ladović{' '}
           <span className="hidden md:inline-block font-light">
             | Web developer
           </span>
         </h1>
-        <ToggleTheme />
-        <ul className="hidden md:flex items-center uppercase text-accent">
-          <a href="#projects">
-            <li className="p-2 border-l-2 border-accent hover:bg-accent hover:text-primary cursor-pointer">
-              Projects
-            </li>
-          </a>
-          <a href="#about">
-            <li className="p-2 border-l-2 border-accent hover:bg-accent hover:text-primary cursor-pointer">
-              About
-            </li>
-          </a>
-          <a href="#contact">
-            <li className="p-2 border-l-2 border-accent hover:bg-accent hover:text-primary cursor-pointer">
-              Contact
-            </li>
-          </a>
-        </ul>
+
+        <div className="flex gap-2 justify-end items-center">
+          <ToggleTheme />
+          <section className="MOBILE-MENU flex lg:hidden">
+            <div
+              className="HAMBURGER-ICON space-y-2 mr-3 cursor-pointer"
+              onClick={() => setIsNavOpen((prev) => !prev)}
+            >
+              <span className="block h-0.5 w-8 bg-accent"></span>
+              <span className="block h-0.5 w-8 bg-accent"></span>
+              <span className="block h-0.5 w-8 bg-accent"></span>
+            </div>
+          </section>
+
+          <ul className="hidden md:flex items-center uppercase text-accent">
+            <a href="#projects">
+              <li className="p-2 border-l-2 border-accent hover:bg-accent hover:text-primary cursor-pointer">
+                Projects
+              </li>
+            </a>
+            <a href="#about">
+              <li className="p-2 border-l-2 border-accent hover:bg-accent hover:text-primary cursor-pointer">
+                About
+              </li>
+            </a>
+            <a href="#contact">
+              <li className="p-2 border-l-2 border-accent hover:bg-accent hover:text-primary cursor-pointer">
+                Contact
+              </li>
+            </a>
+          </ul>
+        </div>
       </nav>
       <div className="border-r border-accent"></div>
       <div className="flex flex-col">
