@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
+import { Link, animateScroll as scroll } from 'react-scroll';
 import ToggleTheme from './ToggleTheme';
 import { BsLinkedin, BsGithub, BsFacebook } from 'react-icons/bs';
 
@@ -44,15 +45,39 @@ function Hero() {
               } w-full min-h-screen p-3 text-2xl text-accent uppercase bg-primary`}
             >
               <div className="flex flex-col h-full items-center justify-center space-y-8 border border-accent">
-                <a href="#projects" onClick={() => setIsNavOpen(false)}>
+                <Link
+                  to="projects"
+                  spy={false}
+                  smooth={true}
+                  offset={-70}
+                  duration={500}
+                  className="cursor-pointer"
+                  onClick={() => setIsNavOpen(false)}
+                >
                   Projects
-                </a>
-                <a href="#about" onClick={() => setIsNavOpen(false)}>
+                </Link>
+                <Link
+                  to="about"
+                  spy={false}
+                  smooth={true}
+                  offset={-70}
+                  duration={500}
+                  className="cursor-pointer"
+                  onClick={() => setIsNavOpen(false)}
+                >
                   About
-                </a>
-                <a href="#contact" onClick={() => setIsNavOpen(false)}>
-                  Contact
-                </a>
+                </Link>
+                <Link
+                  to="contact"
+                  spy={false}
+                  smooth={true}
+                  offset={-70}
+                  duration={500}
+                  className="cursor-pointer"
+                  onClick={() => setIsNavOpen(false)}
+                >
+                  Contact Me
+                </Link>
               </div>
             </motion.div>
           </section>
