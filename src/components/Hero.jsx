@@ -18,14 +18,34 @@ function Hero() {
 
         <div className="flex gap-2 justify-end items-center">
           <ToggleTheme />
-          <section className="MOBILE-MENU flex lg:hidden">
-            <div
-              className="HAMBURGER-ICON space-y-2 mr-3 cursor-pointer"
-              onClick={() => setIsNavOpen((prev) => !prev)}
+          <section className="md:hidden">
+            <button
+              onClick={() => setIsNavOpen(!isNavOpen)}
+              id="menu-btn"
+              type="button"
+              className={`z-40 block hamburger md:hidden focus:outline-none mt-2 mr-2 ${
+                isNavOpen ? 'open' : ''
+              }`}
             >
-              <span className="block h-0.5 w-8 bg-accent"></span>
-              <span className="block h-0.5 w-8 bg-accent"></span>
-              <span className="block h-0.5 w-8 bg-accent"></span>
+              <span className="hamburger-top"></span>
+              <span className="hamburger-middle"></span>
+              <span className="hamburger-bottom"></span>
+            </button>
+
+            {/* Mobile menu */}
+            <div
+              id="mobile-menu"
+              className={`absolute top-0 bottom-0 left-0 ${
+                isNavOpen ? 'block' : 'hidden'
+              } w-full min-h-screen p-3 text-2xl text-accent bg-primary`}
+            >
+              <div className="flex flex-col h-full items-center justify-center space-y-4 border border-accent">
+                <a href="#">About</a>
+                <a href="#">Carrers</a>
+                <a href="#">Events</a>
+                <a href="#">Products</a>
+                <a href="#">Support</a>
+              </div>
             </div>
           </section>
 
