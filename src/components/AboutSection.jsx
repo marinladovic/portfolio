@@ -2,7 +2,10 @@ import profile_image from '../assets/profile.jpg';
 
 function AboutSection() {
   return (
-    <div className="grid grid-cols-[20px_1fr_20px] border-accent border mx-3 mb-12">
+    <div
+      id="about"
+      className="grid grid-cols-[20px_1fr_20px] border-accent border mx-3 mb-12"
+    >
       <div className="border-r border-accent"></div>
       <h1 className="uppercase font-mono tracking-wider text-center py-1 border-b border-accent">
         About me

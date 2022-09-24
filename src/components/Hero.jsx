@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { motion } from 'framer-motion';
 import ToggleTheme from './ToggleTheme';
 import { BsLinkedin, BsGithub, BsFacebook } from 'react-icons/bs';
 
@@ -33,20 +34,27 @@ function Hero() {
             </button>
 
             {/* Mobile menu */}
-            <div
+            <motion.div
               id="mobile-menu"
+              initial={{ x: '100%' }}
+              animate={{ x: isNavOpen ? '0' : '100%' }}
+              transition={{ duration: 0.3 }}
               className={`absolute top-0 bottom-0 left-0 ${
                 isNavOpen ? 'block' : 'hidden'
-              } w-full min-h-screen p-3 text-2xl text-accent bg-primary`}
+              } w-full min-h-screen p-3 text-2xl text-accent uppercase bg-primary`}
             >
-              <div className="flex flex-col h-full items-center justify-center space-y-4 border border-accent">
-                <a href="#">About</a>
-                <a href="#">Carrers</a>
-                <a href="#">Events</a>
-                <a href="#">Products</a>
-                <a href="#">Support</a>
+              <div className="flex flex-col h-full items-center justify-center space-y-8 border border-accent">
+                <a href="#projects" onClick={() => setIsNavOpen(false)}>
+                  Projects
+                </a>
+                <a href="#about" onClick={() => setIsNavOpen(false)}>
+                  About
+                </a>
+                <a href="#contact" onClick={() => setIsNavOpen(false)}>
+                  Contact
+                </a>
               </div>
-            </div>
+            </motion.div>
           </section>
 
           <ul className="hidden md:flex items-center uppercase text-accent">
