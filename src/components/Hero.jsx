@@ -2,11 +2,25 @@ import { useState, Fragment } from 'react';
 import { Menu, Transition } from '@headlessui/react';
 import { Link } from 'react-router-dom';
 import ToggleTheme from './ToggleTheme';
-import { BsLinkedin, BsGithub, BsFacebook } from 'react-icons/bs';
+import { BsLinkedin, BsGithub } from 'react-icons/bs';
 
 function Hero() {
   //eslint-disable-next-line no-unused-vars
   const [isNavOpen, setIsNavOpen] = useState(false);
+
+  const downloadResume = async () => {
+    try {
+      const response = await fetch('marinladovic_resume.pdf');
+      const blob = await response.blob();
+      const fileUrl = window.URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.href = fileUrl;
+      link.setAttribute('download', 'marinladovic_resume.pdf');
+      link.click();
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <div
@@ -79,16 +93,6 @@ function Hero() {
                           </a>
                         </div>
                       </Menu.Item>
-                      <Menu.Item>
-                        <div className="cursor-pointer px-4 py-2 hover:font-bold hover:text-primary hover:bg-accent transition duration-150">
-                          <Link
-                            to="/resume"
-                            onClick={() => setIsNavOpen(false)}
-                          >
-                            Resume
-                          </Link>
-                        </div>
-                      </Menu.Item>
                     </div>
                   </Menu.Items>
                 </Transition>
@@ -113,12 +117,6 @@ function Hero() {
               >
                 Contact
               </a>
-              <Link
-                to="/resume"
-                className="cursor-pointer px-4 py-2 border-l border-accent hover:bg-accent hover:text-primary transition duration-150"
-              >
-                Resume
-              </Link>
             </section>
           </div>
         </nav>
@@ -140,8 +138,11 @@ function Hero() {
             <button className="px-3 py-2 text-primary font-mono font-bold bg-accent border border-accent uppercase mb-3 md:mb-0 sm:mr-4 hover:bg-primary hover:text-accent hover:scale-105 hover:shadow-lg transition duration-150">
               <a href="#contact">contact me</a>
             </button>
-            <button className="px-3 py-2 text-accent font-mono border border-accent uppercase md:mr-4 hover:bg-accent hover:text-primary hover:font-bold hover:scale-105 hover:shadow-lg transition duration-150">
-              view my resume
+            <button
+              onClick={downloadResume}
+              className="px-3 py-2 text-accent font-mono border border-accent uppercase md:mr-4 hover:bg-accent hover:text-primary hover:font-bold hover:scale-105 hover:shadow-lg transition duration-150"
+            >
+              download my resume
             </button>
           </div>
           <div className="flex text-3xl">

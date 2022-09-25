@@ -6,7 +6,7 @@ import ContactSection from '../components/ContactSection';
 
 function Home() {
   return (
-    <div className="w-full xl:w-10/12 2xl:w-[1536px] mx-auto text-accent">
+    <div className="w-full xl:w-10/12 2xl:w-[1280px] mx-auto text-accent">
       <Hero />
       <Tools />
       <ProjectList />

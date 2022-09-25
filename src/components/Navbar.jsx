@@ -1,6 +1,5 @@
-import { useState, useEffect, Fragment } from 'react';
+import { useState, Fragment } from 'react';
 import { Menu, Transition } from '@headlessui/react';
-import { Link } from 'react-router-dom';
 import ToggleTheme from './ToggleTheme';
 
 function Navbar({ scrolled }) {
@@ -72,13 +71,6 @@ function Navbar({ scrolled }) {
                       </a>
                     </div>
                   </Menu.Item>
-                  <Menu.Item>
-                    <div className="cursor-pointer px-4 py-2 hover:font-bold hover:text-primary hover:bg-accent transition duration-150">
-                      <Link to="/resume" onClick={() => setIsNavOpen(false)}>
-                        Resume
-                      </Link>
-                    </div>
-                  </Menu.Item>
                 </div>
               </Menu.Items>
             </Transition>
@@ -103,12 +95,6 @@ function Navbar({ scrolled }) {
           >
             Contact
           </a>
-          <Link
-            to="/resume"
-            className="cursor-pointer px-4 py-2 border-l border-accent hover:bg-accent hover:text-primary transition duration-150"
-          >
-            Resume
-          </Link>
         </section>
       </div>
     </nav>

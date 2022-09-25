@@ -1,20 +1,10 @@
 import { useState, useEffect } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import {
-  collection,
-  getDocs,
-  query,
-  where,
-  orderBy,
-  limit,
-  startAfter,
-} from 'firebase/firestore';
+import { collection, getDocs, query, orderBy, limit } from 'firebase/firestore';
 import { db } from '../firebase.config';
 import ProjectItem from './ProjectItem';
 
 function ProjectList() {
   const [projects, setProjects] = useState([]);
-  // const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchProjects = async () => {
@@ -41,7 +31,7 @@ function ProjectList() {
   }, []);
 
   return (
-    <div id="projects" className="w-full flex flex-col mb-24">
+    <div id="projects" className="w-full flex flex-col mb-12">
       <ul>
         {projects.map((project) => (
           <ProjectItem
