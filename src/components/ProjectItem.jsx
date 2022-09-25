@@ -13,11 +13,7 @@ function ProjectItem() {
       <div className="flex flex-col justify-center lg:flex-row lg:p-6">
         <div className="project-item__image p-6">
           <div className="relative">
-            <img
-              src={githibfinder_laptop_image}
-              alt="app on laptop"
-              className=""
-            />
+            <img src={githibfinder_laptop_image} alt="app on laptop" />
             <img
               src={githibfinder_mobile_image}
               alt="app on laptop"

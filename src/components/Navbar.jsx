@@ -1,103 +1,115 @@
-import { useState, useEffect } from 'react';
-import { useNavigate, useLocation } from 'react-router-dom';
+import { useState, useEffect, Fragment } from 'react';
+import { Menu, Transition } from '@headlessui/react';
+import { Link } from 'react-router-dom';
 import ToggleTheme from './ToggleTheme';
 
-function Navbar() {
-  const [show, setShow] = useState(true);
-  const [lastScrollY, setLastScrollY] = useState(0);
-  const navigate = useNavigate();
-  const location = useLocation();
-
-  const controlNavbar = () => {
-    if (typeof window !== 'undefined') {
-      if (window.scrollY > lastScrollY) {
-        setShow(false);
-      } else {
-        setShow(true);
-      }
-
-      setLastScrollY(window.scrollY);
-    }
-  };
-
-  useEffect(() => {
-    if (typeof window !== 'undefined') {
-      window.addEventListener('scroll', controlNavbar);
-
-      return () => {
-        window.removeEventListener('scroll', controlNavbar);
-      };
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [lastScrollY]);
-
-  const pathMatchRoute = (route) => {
-    if (route === location.pathname) {
-      return true;
-    }
-  };
+function Navbar({ scrolled }) {
+  const [isNavOpen, setIsNavOpen] = useState(false);
 
   return (
-    <header className={`active ${show ? 'hidden' : 'hidden'}`}>
-      <nav className="w-full flex justify-between items-center">
-        <h1 className="p-4 text-accent uppercase font-semibold">
-          Marin Ladović <span className="font-light">| Web developer</span>
+    <nav
+      className={`${
+        scrolled ? 'scrolled' : 'hidden'
+      } flex justify-between w-full border border-accent text-accent`}
+    >
+      <Link to="/">
+        <h1 className="text-accent uppercase font-semibold p-2">
+          Marin Ladović{' '}
+          <span className="hidden sm:inline-block font-light">
+            | Web developer
+          </span>
         </h1>
+      </Link>
+      <div className="flex gap-4 justify-end items-center">
         <ToggleTheme />
-        <ul className="hidden md:flex uppercase text-accent">
-          <li
-            onClick={() => navigate('/')}
-            className={
-              pathMatchRoute('/')
-                ? 'navigation-item__active'
-                : 'navigation-item'
-            }
-          >
-            Home
-          </li>
-          <li
-            onClick={() => navigate('/projects')}
-            className={
-              pathMatchRoute('/projects')
-                ? 'navigation-item__active'
-                : 'navigation-item'
-            }
+        <section className="md:hidden">
+          <Menu>
+            <div className="flex justify-center items-center">
+              <Menu.Button
+                onClick={() => setIsNavOpen(!isNavOpen)}
+                id="menu-btn"
+                type="button"
+                className={`z-40 block hamburger md:hidden focus:outline-none ${
+                  isNavOpen ? 'open' : ''
+                }`}
+              >
+                <span className="hamburger-top"></span>
+                <span className="hamburger-middle"></span>
+                <span className="hamburger-bottom"></span>
+              </Menu.Button>
+            </div>
+            <Transition
+              as={Fragment}
+              enter="transition ease-in duration-300"
+              enterFrom="transform scale-0"
+              enterTo="transform scale-100"
+              leave="transition ease-in duration-300"
+              leaveFrom="transform scale-100"
+              leaveTo="transform scale-0"
+            >
+              <Menu.Items className="absolute top-0 left-0 w-full h-screen origin-top-right bg-primary z-[39] p-10">
+                <div className="border border-accent w-full h-full flex flex-col gap-8 justify-center items-center uppercase font-mono text-3xl">
+                  <Menu.Item>
+                    <div className="cursor-pointer px-4 py-2 hover:font-bold hover:text-primary hover:bg-accent transition duration-150">
+                      <a href="#projects" onClick={() => setIsNavOpen(false)}>
+                        Projects
+                      </a>
+                    </div>
+                  </Menu.Item>
+                  <Menu.Item>
+                    <div className="cursor-pointer px-4 py-2 hover:font-bold hover:text-primary hover:bg-accent transition duration-150">
+                      <a href="#about" onClick={() => setIsNavOpen(false)}>
+                        Bio
+                      </a>
+                    </div>
+                  </Menu.Item>
+                  <Menu.Item>
+                    <div className="cursor-pointer px-4 py-2 hover:font-bold hover:text-primary hover:bg-accent transition duration-150">
+                      <a href="#contact" onClick={() => setIsNavOpen(false)}>
+                        Contact
+                      </a>
+                    </div>
+                  </Menu.Item>
+                  <Menu.Item>
+                    <div className="cursor-pointer px-4 py-2 hover:font-bold hover:text-primary hover:bg-accent transition duration-150">
+                      <Link to="/resume" onClick={() => setIsNavOpen(false)}>
+                        Resume
+                      </Link>
+                    </div>
+                  </Menu.Item>
+                </div>
+              </Menu.Items>
+            </Transition>
+          </Menu>
+        </section>
+        <section className="hidden md:flex justify-end items-center uppercase font-mono">
+          <a
+            href="#projects"
+            className="cursor-pointer px-4 py-2 border-l border-accent hover:bg-accent hover:text-primary transition duration-150"
           >
             Projects
-          </li>
-          <li
-            onClick={() => navigate('/about')}
-            className={
-              pathMatchRoute('/about')
-                ? 'navigation-item__active'
-                : 'navigation-item'
-            }
+          </a>
+          <a
+            href="#about"
+            className="cursor-pointer px-4 py-2 border-l border-accent hover:bg-accent hover:text-primary transition duration-150"
           >
-            About
-          </li>
-          <li
-            onClick={() => navigate('/contact')}
-            className={
-              pathMatchRoute('/contact')
-                ? 'navigation-item__active'
-                : 'navigation-item'
-            }
+            Bio
+          </a>
+          <a
+            href="#contact"
+            className="cursor-pointer px-4 py-2 border-l border-accent hover:bg-accent hover:text-primary transition duration-150"
           >
             Contact
-          </li>
-          <li
-            onClick={() => navigate('/resume')}
-            className={
-              pathMatchRoute('/resume')
-                ? 'navigation-item__active'
-                : 'navigation-item'
-            }
+          </a>
+          <Link
+            to="/resume"
+            className="cursor-pointer px-4 py-2 border-l border-accent hover:bg-accent hover:text-primary transition duration-150"
           >
             Resume
-          </li>
-        </ul>
-      </nav>
-    </header>
+          </Link>
+        </section>
+      </div>
+    </nav>
   );
 }
 
