@@ -5,7 +5,7 @@ import { BsLinkedin, BsGithub } from 'react-icons/bs';
 function Footer() {
   return (
     <footer className="w-full grid grid-cols-1 gap-4 border border-accent text-accent font-mono text-center p-6">
-      <p className="">marinladovic.dev</p>
+      <p className="">marinladovic.com</p>
 
       <div className="flex items-center justify-center text-xl">
         <a
