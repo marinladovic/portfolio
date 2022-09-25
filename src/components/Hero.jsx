@@ -9,7 +9,10 @@ function Hero() {
   const [isNavOpen, setIsNavOpen] = useState(false);
 
   return (
-    <div className="grid grid-cols-[20px_1fr_20px] md:grid-cols-[50px_1fr_50px] mt-3 mb-16 md:mb-24 mx-3 border border-accent">
+    <div
+      id="top"
+      className="grid grid-cols-[20px_1fr_20px] mt-3 mb-16 md:mb-24 mx-3 border border-accent"
+    >
       <div className="col-span-3">
         <nav className="flex justify-between w-full border-b border-accent text-accent">
           <Link to="/">
@@ -47,7 +50,7 @@ function Hero() {
                   leaveFrom="transform scale-100"
                   leaveTo="transform scale-0"
                 >
-                  <Menu.Items className="absolute top-0 left-0 w-full h-screen origin-top-right bg-primary z-[39] p-10">
+                  <Menu.Items className="absolute top-0 left-0 w-full h-screen origin-top-right bg-primary z-[39] p-12">
                     <div className="border border-accent w-full h-full flex flex-col gap-8 justify-center items-center uppercase font-mono text-3xl">
                       <Menu.Item>
                         <div className="cursor-pointer px-4 py-2 hover:font-bold hover:text-primary hover:bg-accent transition duration-150">

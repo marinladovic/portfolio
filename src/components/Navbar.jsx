@@ -12,14 +12,16 @@ function Navbar({ scrolled }) {
         scrolled ? 'scrolled' : 'hidden'
       } flex justify-between w-full border border-accent text-accent`}
     >
-      <Link to="/">
+      {/* <Link to="/"> */}
+      <a href="#top">
         <h1 className="text-accent uppercase font-semibold p-2">
           Marin Ladović{' '}
           <span className="hidden sm:inline-block font-light">
             | Web developer
           </span>
         </h1>
-      </Link>
+      </a>
+      {/* </Link> */}
       <div className="flex gap-4 justify-end items-center">
         <ToggleTheme />
         <section className="md:hidden">

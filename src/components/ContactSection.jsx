@@ -11,7 +11,7 @@ function ContactSection() {
       </div>
       <div className="border-r border-acc"></div>
       {/* Contact form */}
-      <div className="grid grid-cols-1 gap-6 p-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 p-6 md:p-12">
         <label htmlFor="name">
           <span className="font-mono tracking-wider text-lg">Name</span>
           <input
@@ -30,7 +30,7 @@ function ContactSection() {
             placeholder="john@example.com"
           />
         </label>
-        <label htmlFor="message">
+        <label htmlFor="message" className="md:col-span-2">
           <span className="font-mono tracking-wider text-lg">Message</span>
           <textarea
             name="message"
@@ -40,9 +40,12 @@ function ContactSection() {
             placeholder="Hello, I'm interested in your work."
           ></textarea>
         </label>
-        <button className="px-3 py-1 text-2xl text-primary bg-accent font-bold mb-6">
-          Send <FiSend className="inline-block text-primary" />
-        </button>
+        <div className="md:col-span-2 flex items-end justify-end group">
+          <button className="px-3 py-1 md:px-6 md:py-2 text-2xl text-primary bg-accent font-bold font-mono border border-accent hover:bg-primary hover:text-accent hover:border hover:border-accent hover:scale-105 transition duration-150">
+            Send{' '}
+            <FiSend className="inline-block text-primary group-hover:text-accent" />
+          </button>
+        </div>
       </div>
       <div className="border-l border-acc"></div>
     </div>
