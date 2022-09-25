@@ -145,9 +145,20 @@ function Hero() {
             </button>
           </div>
           <div className="flex text-3xl">
-            <BsLinkedin className="mr-4 hover:scale-110 hover:shadow-xl transition duration-150 cursor-pointer" />
-            <BsGithub className="mr-4 hover:scale-110 hover:shadow-xl transition duration-150 cursor-pointer" />
-            <BsFacebook className="mr-4 hover:scale-110 hover:shadow-xl transition duration-150 cursor-pointer" />
+            <a
+              href="https://www.linkedin.com/in/marin-ladovi%C4%87-b03a31250/"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <BsLinkedin className="mr-4 hover:scale-110 hover:shadow-xl transition duration-150 cursor-pointer" />
+            </a>
+            <a
+              href="https://github.com/marinladovic"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <BsGithub className="mr-4 hover:scale-110 hover:shadow-xl transition duration-150 cursor-pointer" />
+            </a>
           </div>
         </div>
       </div>
