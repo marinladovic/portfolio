@@ -1,4 +1,6 @@
 import { useState } from 'react';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import { send } from 'emailjs-com';
 import { FiSend } from 'react-icons/fi';
 
@@ -16,9 +18,15 @@ function ContactSection() {
     e.preventDefault();
     send('service_z8h55be', 'template_wuyva08', toSend, 'EKLn8CtRGYPKRZcXM')
       .then((response) => {
-        console.log('SUCCESS!', response.status, response.text);
+        toast.success('Message sent successfully!');
+        console.log(
+          'Message sent successfully!',
+          response.status,
+          response.text
+        );
       })
       .catch((err) => {
+        toast.error('Something went wrong', err);
         console.log('FAILED...', err);
       });
 

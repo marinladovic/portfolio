@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import { applyTheme } from './theme/utils';
 import darkTheme from './theme/dark';
 import Home from './pages/Home';
@@ -38,6 +40,18 @@ function App() {
         </Routes>
         <Footer />
       </Router>
+
+      <ToastContainer
+        position="top-right"
+        autoClose={3000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
     </>
   );
 }
