@@ -6,6 +6,7 @@ module.exports = {
     colors: {
       accent: 'var(--theme-accent)',
       primary: 'var(--theme-primary)',
+      place: 'var(--theme-place)',
       // accent: '#00ffd0',
       // primitive: '#005963',
     },

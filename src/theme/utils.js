@@ -5,9 +5,10 @@ export function applyTheme(theme) {
   });
 }
 
-export function createTheme({accent, primary}){
+export function createTheme({ accent, primary, place }) {
   return {
     '--theme-accent': accent,
     '--theme-primary': primary,
+    '--theme-place': place,
   };
 }
